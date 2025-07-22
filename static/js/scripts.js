@@ -21,6 +21,16 @@ startBtn.addEventListener("click", () => {
     const player = data.player;
     if (player) {
       showStatsSidebar(player);
+
+
+    // Load the Monster
+    const enemyImage = document.createElement("img");
+    enemyImage.src = data.enemy.image_url;
+    enemyImage.alt = data.enemy.name;
+    enemyImage.style.width = "200px";
+
+    document.getElementById("game-container").appendChild(enemyImage);
+
     }
   });
 });
