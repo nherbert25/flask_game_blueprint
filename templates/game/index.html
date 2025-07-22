@@ -5,37 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Card Game Prototype</title>
   <link rel="stylesheet" href="{{ url_for('flask_game_bp.static', filename='css/styles.css') }}">
-
 </head>
 <body>
-    <h1>Welcome to the Game</h1>
-    <div id="game-log"></div>
-    <button onclick="startGame()">Start</button>
-    <button onclick="attack()">Attack</button>
+  <h1>Welcome to the Game</h1>
 
-    <script>
-        function startGame() {
-            fetch("/game/start", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({player_name: "Hero"})
-            })
-            .then(res => res.json())
-            .then(data => document.getElementById("game-log").innerText = data.message);
-        }
+  <div id="game-log"></div>
 
-        function attack() {
-            fetch("/game/attack", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({player_name: "Hero", enemy: "Goblin"})
-            })
-            .then(res => res.json())
-            .then(data => document.getElementById("game-log").innerText = data.result);
-        }
-    </script>
-
-
+  <button id="start-btn">Start</button>
+  <button id="attack-btn">Attack</button>
 
   <h1>Card Game Prototype</h1>
 
@@ -49,18 +26,7 @@
   </div>
 
   <div id="log"></div>
+
   <script src="{{ url_for('flask_game_bp.static', filename='js/scripts.js') }}"></script>
-
-
-
-
-
-
 </body>
 </html>
-
-
-
-
-
-

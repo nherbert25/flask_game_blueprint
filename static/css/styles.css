@@ -57,3 +57,9 @@ h1 {
   font-size: 1.2em;
   color: #333;
 }
+
+#game-log {
+  margin-bottom: 1em;
+  color: #222;
+  font-size: 1.1em;
+}
