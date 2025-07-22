@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Game</title>
-    <link rel="stylesheet" href="{{ url_for('flask_game_bp.static', filename='styles.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Card Game Prototype</title>
+  <link rel="stylesheet" href="{{ url_for('flask_game_bp.static', filename='css/styles.css') }}">
+
 </head>
 <body>
     <h1>Welcome to the Game</h1>
@@ -31,5 +34,33 @@
             .then(data => document.getElementById("game-log").innerText = data.result);
         }
     </script>
+
+
+
+  <h1>Card Game Prototype</h1>
+
+  <div class="card-container">
+    <div class="card attack" draggable="true" data-type="attack">Attack</div>
+    <div class="card defense" draggable="true" data-type="defense">Defense</div>
+  </div>
+
+  <div class="drop-zone" id="activation-zone">
+    Drop here to activate
+  </div>
+
+  <div id="log"></div>
+  <script src="{{ url_for('flask_game_bp.static', filename='js/scripts.js') }}"></script>
+
+
+
+
+
+
 </body>
 </html>
+
+
+
+
+
+

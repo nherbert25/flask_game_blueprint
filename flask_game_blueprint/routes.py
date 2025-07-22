@@ -5,6 +5,7 @@ from .logic import GameSession
 # Dummy in-memory state
 sessions = {}
 
+@flask_game_bp.route("/", methods=["GET"])
 @flask_game_bp.route("/game", methods=["GET"])
 def game_home():
     return render_template("index.html")

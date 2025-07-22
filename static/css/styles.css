@@ -1,0 +1,59 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin: 2em;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  font-weight: bold;
+  user-select: none;
+}
+
+.card.attack {
+  background-color: #ffdddd;
+}
+
+.card.defense {
+  background-color: #ddf0ff;
+}
+
+.drop-zone {
+  width: 300px;
+  height: 200px;
+  border: 3px dashed #999;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  background-color: #ffffffaa;
+}
+
+#log {
+  margin-top: 2em;
+  font-size: 1.2em;
+  color: #333;
+}
