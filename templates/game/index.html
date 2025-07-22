@@ -25,6 +25,14 @@
     Drop here to activate
   </div>
 
+  <div id="stats-sidebar">
+    <h3>Player Stats</h3>
+    <p>Name: <span id="player-name-display">-</span></p>
+    <p>HP: <span id="player-hp">-</span></p>
+    <p>Attack: <span id="player-attack">-</span></p>
+    <p>Defense: <span id="player-defense">-</span></p>
+</div>
+
   <div id="log"></div>
 
   <script src="{{ url_for('flask_game_bp.static', filename='js/scripts.js') }}"></script>

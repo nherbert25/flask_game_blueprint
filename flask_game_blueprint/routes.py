@@ -15,7 +15,16 @@ def start_game():
     player_name = request.json.get("player_name", "Player1")
     session = GameSession(player_name)
     sessions[player_name] = session
-    return jsonify({"message": f"Game started for {player_name}!"})
+    # Return stats as well
+    return jsonify({
+        "message": f"Game started for {player_name}!",
+        "player": {
+            "name": session.player_name,
+            "hp": session.hp,
+            "attack": session.attack,
+            "defense": session.defense,
+        }
+    })
 
 @flask_game_bp.route("/game/attack", methods=["POST"])
 def attack():

@@ -7,17 +7,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("start-btn");
   const attackBtn = document.getElementById("attack-btn");
 
-  startBtn.addEventListener("click", () => {
-    fetch("/game/start", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ player_name: "Hero" })
-    })
-      .then(res => res.json())
-      .then(data => {
-        gameLog.innerText = data.message;
-      });
+startBtn.addEventListener("click", () => {
+  // Optionally send player name or hardcode it
+  fetch("/game/start", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ player_name: "Hero" }),
+  })
+  .then(res => res.json())
+  .then(data => {
+    gameLog.innerText = data.message;
+
+    const player = data.player;
+    if (player) {
+      showStatsSidebar(player);
+    }
   });
+});
+
+function showStatsSidebar(player) {
+  const sidebar = document.getElementById("stats-sidebar");
+  document.getElementById("player-name-display").innerText = player.name || "-";
+  document.getElementById("player-hp").innerText = player.hp + " HP";
+  document.getElementById("player-attack").innerText = player.attack + " ATK";
+  document.getElementById("player-defense").innerText = player.defense + " DEF";
+  sidebar.classList.add("visible");
+}
 
   attackBtn.addEventListener("click", () => {
     fetch("/game/attack", {
