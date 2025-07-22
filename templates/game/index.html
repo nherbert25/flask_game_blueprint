@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" href="{{ url_for('game_bp.static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Game</h1>
+    <div id="game-log"></div>
+    <button onclick="startGame()">Start</button>
+    <button onclick="attack()">Attack</button>
+
+    <script>
+        function startGame() {
+            fetch("/game/start", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({player_name: "Hero"})
+            })
+            .then(res => res.json())
+            .then(data => document.getElementById("game-log").innerText = data.message);
+        }
+
+        function attack() {
+            fetch("/game/attack", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({player_name: "Hero", enemy: "Goblin"})
+            })
+            .then(res => res.json())
+            .then(data => document.getElementById("game-log").innerText = data.result);
+        }
+    </script>
+</body>
+</html>
