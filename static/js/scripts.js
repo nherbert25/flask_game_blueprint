@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const attackBtn = document.getElementById("attack-btn");
 
 startBtn.addEventListener("click", () => {
-  // Optionally send player name or hardcode it
+   startBtn.style.display = "none"; // Hides the Start button
+
+
   fetch("/game/start", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -16,7 +18,7 @@ startBtn.addEventListener("click", () => {
   })
   .then(res => res.json())
   .then(data => {
-    gameLog.innerText = data.message;
+    gameLog.innerText = `You encountered a ${data.enemy.name}!`;
 
     const player = data.player;
     if (player) {
@@ -44,17 +46,17 @@ function showStatsSidebar(player) {
   sidebar.classList.add("visible");
 }
 
-  attackBtn.addEventListener("click", () => {
-    fetch("/game/attack", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ player_name: "Hero", enemy: "Goblin" })
-    })
-      .then(res => res.json())
-      .then(data => {
-        gameLog.innerText = data.result;
-      });
-  });
+  // attackBtn.addEventListener("click", () => {
+  //   fetch("/game/attack", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ player_name: "Hero", enemy: "Goblin" })
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       gameLog.innerText = data.result;
+  //     });
+  // });
 
   cards.forEach(card => {
     card.addEventListener("dragstart", e => {
